@@ -13,7 +13,7 @@ namespace TrackerServer
         }
         public static void LogDebugLogin(this ILogger logger, string sessionKey)
         {
-            logger.LogDebug("[" + DateTime.Now.ToString() + "]" + $"sessionKey:{sessionKey}");
+            logger.LogDebug("[" + DateTime.Now.ToString() + "]" + $"SessionKey:{sessionKey}");
         }
         public static void LogDebugSetTrackingValue(this ILogger logger, string sessionKey,int trackingValue)
         {

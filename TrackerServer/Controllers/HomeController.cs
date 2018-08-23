@@ -39,7 +39,7 @@ namespace TrackerServer.Controllers
 
             if (session_key != null)
             {
-                Session s = null;
+                SessionDto s = null;
                 if (tracking_value != -1)
                 {
                     s = SetData(session_key, tracking_value);
@@ -61,7 +61,7 @@ namespace TrackerServer.Controllers
 
         }
 
-        private Session SingIn(string session_key)
+        private SessionDto SingIn(string session_key)
         {
             SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
             if (swk != null)
@@ -83,13 +83,13 @@ namespace TrackerServer.Controllers
                 swk = GetNewSession(session_key);
                 Sessions.Add(swk);
                 logger.LogDebugLogin(session_key);
-                return swk;
+                return new SessionDto(swk);
             }
 
             else
                 return null;
         }
-        private Session SetData(string session_key, int tracking_value)
+        private SessionDto SetData(string session_key, int tracking_value)
         {
             SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
             if (swk != null)
@@ -103,15 +103,15 @@ namespace TrackerServer.Controllers
                 else
                 {
                     swk.lastRequest = DateTime.Now;
-                    swk.session_time -= (int)a;
+                    swk.session_time -= a;
                     logger.LogDebugSetTrackingValue(session_key, tracking_value);
-                    return swk;
+                    return new SessionDto(swk);
                 }
             }
             else
                 return null;
         }
-        private Session SetError(string session_key, int ping_error)
+        private SessionDto SetError(string session_key, int ping_error)
         {
             SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
             if (swk != null)
@@ -125,9 +125,9 @@ namespace TrackerServer.Controllers
                 else
                 {
                     swk.lastRequest = DateTime.Now;
-                    swk.session_time -= (int)a;
+                    swk.session_time -= a;
                     logger.LogDebugSetPingError(session_key, ping_error);
-                    return swk;
+                    return new SessionDto(swk);
                 }
             }
             else
