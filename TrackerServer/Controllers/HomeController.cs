@@ -68,23 +68,48 @@ namespace TrackerServer.Controllers
         private Session SingIn(string session_key)
         {
             SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
-            if (swk != null && DateTime.Now.Subtract(swk.lastRequest).TotalSeconds > swk.session_time)
+            if (swk != null)
             {
-                Sessions.Remove(swk);
-            }
-            else
-            return null;
-
-
-
-            if (!Users.Contains(session_key))
+                double a = DateTime.Now.Subtract(swk.lastRequest).TotalSeconds;
+                if (a > swk.session_time)
+                {
+                    Sessions.Remove(swk);
+                }
+                else 
                 return null;
-            else
+            }
+            if (Users.Contains(session_key))
             {
                 swk = GetNewSession(session_key);
                 Sessions.Add(swk);
-                return (Session)swk;
+                return swk;
             }
+
+            else
+                return null;
+            // SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
+            // if (swk != null && DateTime.Now.Subtract(swk.lastRequest).TotalSeconds > swk.session_time)
+            // {
+            //     Sessions.Remove(swk);
+            //     swk = GetNewSession(session_key);
+            //     Sessions.Add(swk);
+            //     return (Session)swk;
+            // }
+            // else
+            // {
+            //     if (!Users.Contains(session_key))
+            //         return null;
+            //     else
+            //     {
+            //         swk = GetNewSession(session_key);
+            //         Sessions.Add(swk);
+            //         return (Session)swk;
+            //     }
+            // }
+
+
+
+
         }
         private Session SetData(string session_key, int tracking_time)
         {
