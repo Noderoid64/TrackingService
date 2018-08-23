@@ -26,42 +26,33 @@ namespace TrackerServer.Controllers
         }
 
         [Route("")]
-        public IActionResult login()//ILoggerFactory loggerFactory)
+        public IActionResult login()
         {
             List<string> a = Request.Query.Keys.ToList();
             int ping_error = -1;
             int tracking_value = -1;
             string session_key = Request.Query.FirstOrDefault(p => p.Key == "session_key").Value;
             if (Request.Query.ContainsKey("ping_error"))
-                int.TryParse(Request.Query.FirstOrDefault(p => p.Key == "ping_error").Value, out  ping_error);
+                int.TryParse(Request.Query.FirstOrDefault(p => p.Key == "ping_error").Value, out ping_error);
             if (Request.Query.ContainsKey("tracking_value"))
-                int.TryParse(Request.Query.FirstOrDefault(p => p.Key == "tracking_value").Value, out  tracking_value);
+                int.TryParse(Request.Query.FirstOrDefault(p => p.Key == "tracking_value").Value, out tracking_value);
 
-            // var logger = loggerFactory.CreateLogger("FileLogger");
-
-            // logger.LogDebug("[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "]" + "Take request " + "session_Key: " + session_key + " tracking_time:" + tracking_time + " ping_error:" + ping_error);
             if (session_key != null)
             {
-               // session_key = session_key.Remove(0, 1);
-              //  session_key = session_key.Remove(session_key.Length - 1, 1);
                 Session s = null;
                 if (tracking_value != -1)
                 {
-                    logger.LogDebug("[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "]" + "SetData " + "session_Key: " + session_key + " tracking_value:" + tracking_value);
-                    // tracking_time = tracking_time.Remove(0, 1);
-                    // tracking_time = tracking_time.Remove(tracking_time.Length - 1, 1);
+                    logger.LogDebugSetTrackingValue(session_key, tracking_value);
                     s = SetData(session_key, tracking_value);
                 }
                 else if (ping_error != -1)
                 {
-                    logger.LogDebug("[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "]" + "SetError " + "session_Key: " + session_key + " ping_error:" + ping_error);
-                    //ping_error = ping_error.Remove(0, 1);
-                    // ping_error = ping_error.Remove(ping_error.Length - 1, 1);
+                    logger.LogDebugSetPingError(session_key, ping_error);
                     s = SetError(session_key, ping_error);
                 }
                 else
                 {
-                    logger.LogDebug("[" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "]" + "SetData " + "session_Key: " + session_key );
+                    logger.LogDebugLogin(session_key);
                     s = SingIn(session_key);
 
                 }
@@ -76,22 +67,32 @@ namespace TrackerServer.Controllers
 
         private Session SingIn(string session_key)
         {
-            if (!Users.Contains(session_key) || Sessions.FirstOrDefault(p => p.Key == session_key) != null)
+            SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
+            if (swk != null && DateTime.Now.Subtract(swk.lastRequest).TotalSeconds > swk.session_time)
+            {
+                Sessions.Remove(swk);
+            }
+            else
+            return null;
+
+
+
+            if (!Users.Contains(session_key))
                 return null;
             else
             {
-                SessionWithKey swk = GetNewSession(session_key);
+                swk = GetNewSession(session_key);
                 Sessions.Add(swk);
                 return (Session)swk;
             }
         }
         private Session SetData(string session_key, int tracking_time)
         {
-            if (!Users.Contains(session_key) || Sessions.FirstOrDefault(p => p.Key == session_key) == null)
+            SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
+            if (swk == null)
                 return null;
             else
             {
-                SessionWithKey swk = Sessions.FirstOrDefault(p => p.Key == session_key);
                 swk.session_time -= (DateTime.Now.Second - swk.lastRequest.Second) + (DateTime.Now.Minute - swk.lastRequest.Minute) * 60 + (DateTime.Now.Hour - swk.lastRequest.Hour) * 3600;
                 if (swk.session_time < 0)
                 {

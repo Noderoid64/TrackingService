@@ -12,5 +12,7 @@ namespace TrackerServer
     {
         public string Key { get; set; }
         public DateTime lastRequest{get;set;}
+
+       
     }
 }
