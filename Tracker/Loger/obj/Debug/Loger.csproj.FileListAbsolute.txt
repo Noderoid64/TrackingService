@@ -1,0 +1,5 @@
+C:\Users\Nod\Desktop\444\Tracker\Loger\bin\Debug\Loger.dll
+C:\Users\Nod\Desktop\444\Tracker\Loger\bin\Debug\Loger.pdb
+C:\Users\Nod\Desktop\444\Tracker\Loger\obj\Debug\Loger.csproj.CoreCompileInputs.cache
+C:\Users\Nod\Desktop\444\Tracker\Loger\obj\Debug\Loger.dll
+C:\Users\Nod\Desktop\444\Tracker\Loger\obj\Debug\Loger.pdb

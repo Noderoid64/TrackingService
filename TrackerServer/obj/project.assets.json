@@ -11506,11 +11506,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git\\Tracking\\TrackerServer\\TrackerServer.csproj",
+      "projectUniqueName": "C:\\Users\\Nod\\Desktop\\444\\TrackerServer\\TrackerServer.csproj",
       "projectName": "TrackerServer",
-      "projectPath": "D:\\Git\\Tracking\\TrackerServer\\TrackerServer.csproj",
+      "projectPath": "C:\\Users\\Nod\\Desktop\\444\\TrackerServer\\TrackerServer.csproj",
       "packagesPath": "C:\\Users\\Nod\\.nuget\\packages\\",
-      "outputPath": "D:\\Git\\Tracking\\TrackerServer\\obj\\",
+      "outputPath": "C:\\Users\\Nod\\Desktop\\444\\TrackerServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

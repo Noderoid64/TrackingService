@@ -17,3 +17,9 @@ C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Nod\Desktop\444\Tracker\Tracker\obj\Debug\Tracker.csproj.CopyComplete
 C:\Users\Nod\Desktop\444\Tracker\Tracker\obj\Debug\AdditionalSessionForm.g.cs
 C:\Users\Nod\Desktop\444\Tracker\Tracker\obj\Debug\AdditionalSessionForm.baml
+C:\Users\Nod\Desktop\444\Tracker\Tracker\obj\Debug\Tracker.csprojAssemblyReference.cache
+C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Loger.dll
+C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Loger.pdb
+C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
+C:\Users\Nod\Desktop\444\Tracker\Tracker\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml

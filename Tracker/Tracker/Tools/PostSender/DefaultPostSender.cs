@@ -21,7 +21,7 @@ namespace Tracker.Tools.PostSender
                 if (i != properties.Count - 1)
                     str += "&";
             }
-            return (host.ToString() + str.ToString());
+            return (PreProcessing(host) + str.ToString());
         }
 
         public string Post(string message)
@@ -68,6 +68,13 @@ namespace Tracker.Tools.PostSender
                 count = sr.Read(read, 0, 256);
             }
             return Out;
+        }
+        private string PreProcessing(string value)
+        {
+            if (!value.ToLower().StartsWith("http://"))
+                return "http://" + value;
+            else
+                return value;
         }
     }
 }

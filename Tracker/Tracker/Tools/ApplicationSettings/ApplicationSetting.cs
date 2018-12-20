@@ -30,6 +30,10 @@ namespace Tracker.Tools.ApplicationSettings
         public Session Session { get; set; }
         public string ServerURL { get; set; }
         public string PingURL { get; set; }
+        public string PingTimeOut { get; set; }
+        public bool UseLogin { get; set; }
+        public object Icon { get; set; }
+        public bool AdditionalTime { get; set; }
         #endregion
 
         public static void FillSettings(string FilePath)
@@ -46,6 +50,8 @@ namespace Tracker.Tools.ApplicationSettings
                     ApplicationSetting.GetInstance();
                appSetting.ServerURL = settings["server_url"];
                appSetting.PingURL = settings["ping_url"];
+                appSetting.PingTimeOut = settings["ping_time_out"];
+                appSetting.UseLogin = bool.Parse( settings["loger"]);
             }
         }
     }

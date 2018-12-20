@@ -19,6 +19,7 @@ namespace Tracker.Model
         public int TrackingTime { get; set;}
         public string SessionKey { get; set;}
         public int PingError { get; set; }
+        public int AdditionalTime { get; set; }
 
         
     }

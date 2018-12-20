@@ -1,0 +1,32 @@
+[Debug][18:34: 0:765] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][18:34: 0:998] Post Response: -3
+[Debug][18:34: 5:266] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][18:34: 5:325] Post Response: -3
+[Debug][18:35:37:819] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][18:35:38:60] Post Response: {"key":"nod","lastRequest":"2018-11-26T18:35:37.876653+02:00","additional":false,"tracking_time":5,"session_time":20,"additional_time":20}
+[Debug][18:35:38:151] Timer start 31665688
+[Debug][18:35:43:158] Timer tick 31665688
+[Debug][18:35:43:167] Send ping to soft-file.ru
+[Debug][18:35:43:225] Receive pingSuccess
+[Debug][18:35:43:237] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=0
+[Debug][18:35:43:273] Post Response: {"key":"nod","lastRequest":"2018-11-26T18:35:43.256592+02:00","additional":false,"tracking_time":5,"session_time":14,"additional_time":20}
+[Debug][18:35:48:297] Timer tick 31665688
+[Debug][18:35:48:305] Send ping to soft-file.ru
+[Debug][18:35:48:345] Receive pingSuccess
+[Debug][18:35:48:354] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=1
+[Debug][18:35:48:391] Post Response: {"key":"nod","lastRequest":"2018-11-26T18:35:48.3747159+02:00","additional":false,"tracking_time":5,"session_time":9,"additional_time":20}
+[Debug][18:35:53:403] Timer tick 31665688
+[Debug][18:35:53:414] Send ping to soft-file.ru
+[Debug][18:35:53:462] Receive pingSuccess
+[Debug][18:35:53:474] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=1
+[Debug][18:35:53:530] Post Response: {"key":"nod","lastRequest":"2018-11-26T18:35:53.4981281+02:00","additional":false,"tracking_time":5,"session_time":4,"additional_time":20}
+[Debug][18:35:53:679] Timer stop 31665688
+[Debug][18:35:56:268] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][18:35:56:310] Post Response: {"key":"nod","lastRequest":"2018-11-26T18:35:56.2941925+02:00","additional":false,"tracking_time":5,"session_time":1,"additional_time":20}
+[Debug][18:35:56:322] Timer start 52684690
+[Debug][18:36: 1:324] Timer tick 52684690
+[Debug][18:36: 1:335] Send ping to soft-file.ru
+[Debug][18:36: 1:383] Receive pingSuccess
+[Debug][18:36: 1:401] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=0
+[Debug][18:36: 1:474] Post Response: -3
+[Debug][18:36: 1:702] Timer stop 52684690

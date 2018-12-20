@@ -14,20 +14,20 @@ namespace Tracker.Tools.PingModule
     static class PingController
     {
 
-        public static bool GetPing(string host)
+        public static bool GetPing(string host, int timeOut)
         {
+            AppLoger.Log("Send ping to " + PreProcessing(host));
             try
             {
                 Ping P = new Ping();
-                PingReply Status = P.Send(host, 1);
+                PingReply Status = P.Send(PreProcessing(host), timeOut * 1000);
+                AppLoger.Log("Receive ping" + Status.Status);
                 if (Status.Status == IPStatus.Success)
                 {
-                    Debug.Print("Ping true : " + Status.Status);
                     return true;
                 }
                 else
                 {
-                    Debug.Print("Ping false :" + Status.Status);
                     return false;
                 }
                     
@@ -38,7 +38,21 @@ namespace Tracker.Tools.PingModule
                 Debug.Print("PingError");
                 return false;
             }
-
+            finally
+            {
+                
+            }
+            
+        }
+        private static string PreProcessing(string value)
+        {
+            string b = value.ToLower();
+            if (b.StartsWith("http://"))
+                value = value.Remove(0, 7);
+            else if (b.StartsWith("https://"))
+                value = value.Remove(0,8);
+            return value.Split('/')[0];
+            
         }
     }
 }

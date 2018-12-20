@@ -1,0 +1,29 @@
+[Debug][ 8:47: 9:143] Post Request : http://127.0.0.1:5000/Gate?session_key=qwer
+[Debug][ 8:47:12:548] Post Response: -3
+[Debug][ 8:47:27:165] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][ 8:47:27:978] Post Response: {"key":"nod","lastRequest":"2018-12-15T08:47:27.2346936+02:00","additional":false,"tracking_time":5,"session_time":20,"additional_time":20}
+[Debug][ 8:47:28:121] Timer start 67085535
+[Debug][ 8:47:33:130] Timer tick 67085535
+[Debug][ 8:47:33:375] Send ping to soft-file.ru
+[Debug][ 8:47:33:478] Receive pingSuccess
+[Debug][ 8:47:33:489] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=0
+[Debug][ 8:47:33:526] Post Response: {"key":"nod","lastRequest":"2018-12-15T08:47:33.5128714+02:00","additional":false,"tracking_time":5,"session_time":14,"additional_time":20}
+[Debug][ 8:47:38:645] Timer tick 67085535
+[Debug][ 8:47:38:655] Send ping to soft-file.ru
+[Debug][ 8:47:38:709] Receive pingSuccess
+[Debug][ 8:47:38:718] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=1
+[Debug][ 8:47:38:758] Post Response: {"key":"nod","lastRequest":"2018-12-15T08:47:38.7381073+02:00","additional":false,"tracking_time":5,"session_time":9,"additional_time":20}
+[Debug][ 8:47:43:783] Timer tick 67085535
+[Debug][ 8:47:43:794] Send ping to soft-file.ru
+[Debug][ 8:47:43:836] Receive pingSuccess
+[Debug][ 8:47:43:847] Post Request : http://127.0.0.1:5000/Gate?session_key=nod&tracking_value=1
+[Debug][ 8:47:43:889] Post Response: {"key":"nod","lastRequest":"2018-12-15T08:47:43.8726715+02:00","additional":false,"tracking_time":5,"session_time":4,"additional_time":20}
+[Debug][ 8:47:44:27] Timer stop 67085535
+[Debug][ 8:47:55:118] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][ 8:47:55:190] Post Response: -3
+[Debug][ 8:47:59:45] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][ 8:47:59:100] Post Response: -3
+[Debug][ 8:48: 1:821] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][ 8:48: 1:927] Post Response: -3
+[Debug][ 8:48: 7:510] Post Request : http://127.0.0.1:5000/Gate?session_key=nod
+[Debug][ 8:48: 7:675] Post Response: -3
