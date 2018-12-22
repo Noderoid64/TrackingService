@@ -36,7 +36,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>clock-icon.png.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -74,15 +75,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdditionalSessionForm.xaml.cs">
-      <DependentUpon>AdditionalSessionForm.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="Diagnostics\LoggerController.cs" />
+    <Compile Include="Diagnostics\ProcessKiller.cs" />
     <Compile Include="Model\ServerResponse.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Tools\ApplicationDiagnostic\AppDiagnostic.cs" />
-    <Compile Include="Tools\ApplicationSettings\AdditionalSessionFormExtention.cs" />
-    <Compile Include="Tools\ApplicationSettings\ApplicationSetting.cs" />
-    <Compile Include="Tools\ApplicationSettings\WindowExtention.cs" />
     <Compile Include="Tools\ConnectionModule\DefaultConnectionModule.cs" />
     <Compile Include="Tools\ConnectionModule\ConnectionModule.cs" />
     <Compile Include="Tools\PingModule\PingController.cs" />
@@ -96,34 +94,25 @@
     <Compile Include="UIModule\AdditionalSessionUI.xaml.cs">
       <DependentUpon>AdditionalSessionUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UIModule\Main.xaml.cs">
+    <Compile Include="UIModule\IViewModule.cs" />
+    <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIModule\TrayModule.cs" />
+    <Compile Include="UIModule\ViewModule.cs" />
     <Compile Include="UIModule\WindowLoginUI.xaml.cs">
       <DependentUpon>WindowLoginUI.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdditionalSessionForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tools\GlobalHook.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="UIModule\AdditionalSessionUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UIModule\Main.xaml">
+    <Page Include="Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,10 +152,8 @@
     <Resource Include="Resources\Icons\Men.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="clock-icon.png.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Icons\clock-icon.png.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

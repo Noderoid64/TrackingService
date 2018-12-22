@@ -1,0 +1,3 @@
+[Fatal] [16:18:22:546] Configure Logger error: 
+System.Exception: Выдано исключение типа "System.Exception".
+   в Tracker.Diagnostics.LoggerController.ConfigureLogger() в D:\Git\Tracking\Tracker\Tracker\Diagnostics\LoggerController.cs:строка 35
