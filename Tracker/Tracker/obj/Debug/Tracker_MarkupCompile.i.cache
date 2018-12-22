@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Nod\Desktop\444\Tracker\Tracker\obj\Debug\
+D:\Git\Tracking\Tracker\Tracker\obj\Debug\
 Tracker
 none
 false
 DEBUG;TRACE
-C:\Users\Nod\Desktop\444\Tracker\Tracker\App.xaml
-2-1902031742
+D:\Git\Tracking\Tracker\Tracker\App.xaml
+5-1783499571
 
-28524944414
-18-2139332452
-AdditionalSessionForm.xaml;MainWindow.xaml;
+30798779016
+191426972140
+AdditionalSessionForm.xaml;MainWindow.xaml;UIModule\AdditionalSessionUI.xaml;UIModule\Main.xaml;UIModule\WindowLoginUI.xaml;
 
 True
 

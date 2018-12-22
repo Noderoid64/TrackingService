@@ -45,6 +45,10 @@
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
     </Reference>
+    <Reference Include="MercuryLogger">
+      <HintPath>..\..\..\MercuryLogger\MercuryLogger\obj\Debug\netstandard2.0\MercuryLogger.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -81,7 +85,6 @@
     <Compile Include="Tools\ApplicationSettings\WindowExtention.cs" />
     <Compile Include="Tools\ConnectionModule\DefaultConnectionModule.cs" />
     <Compile Include="Tools\ConnectionModule\ConnectionModule.cs" />
-    <Compile Include="Tools\Loger\AppLoger.cs" />
     <Compile Include="Tools\PingModule\PingController.cs" />
     <Compile Include="Tools\PostSender\DefaultPostSender.cs" />
     <Compile Include="Tools\ConnectionModule\WebAPI\IWebAPI.cs" />
@@ -90,6 +93,15 @@
     <Compile Include="Tools\PostSender\WebApiErrorsEnum.cs" />
     <Compile Include="Tools\TimerController\GlobalHookController.cs" />
     <Compile Include="Tools\TimerController\TimerController.cs" />
+    <Compile Include="UIModule\AdditionalSessionUI.xaml.cs">
+      <DependentUpon>AdditionalSessionUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIModule\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIModule\WindowLoginUI.xaml.cs">
+      <DependentUpon>WindowLoginUI.xaml</DependentUpon>
+    </Compile>
     <Page Include="AdditionalSessionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +119,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UIModule\AdditionalSessionUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIModule\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIModule\WindowLoginUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -143,12 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\clock-icon.png.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Loger\Loger.csproj">
-      <Project>{7b713f54-02af-40ab-9644-684454e60f2f}</Project>
-      <Name>Loger</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

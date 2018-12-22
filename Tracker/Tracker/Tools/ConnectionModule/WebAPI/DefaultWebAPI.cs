@@ -26,9 +26,7 @@ namespace Tracker.Tools.ConnectionModule.WebAPI
         private ServerResponse SendMessage(NameValueCollection nvc)
         {
             string localString = postSender.FormMessage(ApplicationSetting.GetInstance().ServerURL, nvc);
-            AppLoger.Log("Post Request : " + localString);
             string resp = postSender.Post(localString);
-            AppLoger.Log("Post Response: " + resp);
             try
             {
                 return JsonConvert.DeserializeObject<ServerResponse>(resp);

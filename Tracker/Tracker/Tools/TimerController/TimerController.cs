@@ -26,12 +26,10 @@ namespace Tracker.Tools.TimerController
                 GHK.SetHook();
             TimerCallback tm = new TimerCallback(Tick);
             timer = new Timer(tm, response.tracking_time, response.tracking_time * 1000, response.tracking_time * 1000);
-            AppLoger.Log("Timer start " + timer.GetHashCode().ToString());
         }
 
         public void Tick(object o)
         {
-            AppLoger.Log("Timer tick " + timer.GetHashCode().ToString());
             int trackingTime = (int)o;
 
             ApplicationSetting settings = ApplicationSetting.GetInstance();
@@ -59,7 +57,6 @@ namespace Tracker.Tools.TimerController
                 {
                     timer.Dispose();
                     SessionClose.Invoke(false);
-                    AppLoger.Log("Timer stop " + timer.GetHashCode().ToString());
                 }
                 else
                 {
@@ -79,7 +76,6 @@ namespace Tracker.Tools.TimerController
                                 else
                                     SessionClose.Invoke(true);
 
-                                AppLoger.Log("Timer stop " + timer.GetHashCode().ToString());
                                 if (ApplicationSetting.GetInstance().AdditionalTime == true)
                                     ApplicationSetting.GetInstance().AdditionalTime = false;
                                 else
@@ -87,7 +83,6 @@ namespace Tracker.Tools.TimerController
                             }
                             else
                             {
-                                AppLoger.Log("Last request");
                                 timer?.Change(response.session_time * 1000, response.tracking_time * 1000);
                             }
 
@@ -115,7 +110,6 @@ namespace Tracker.Tools.TimerController
                                 timer.Change(0, Timeout.Infinite);
                                 timer.Dispose();
                                 SessionClose.Invoke(false);
-                                AppLoger.Log("Timer stop " + timer.GetHashCode().ToString());
                                 if (ApplicationSetting.GetInstance().AdditionalTime == true)
                                     ApplicationSetting.GetInstance().AdditionalTime = false;
                                 else

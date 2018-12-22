@@ -16,12 +16,10 @@ namespace Tracker.Tools.PingModule
 
         public static bool GetPing(string host, int timeOut)
         {
-            AppLoger.Log("Send ping to " + PreProcessing(host));
             try
             {
                 Ping P = new Ping();
                 PingReply Status = P.Send(PreProcessing(host), timeOut * 1000);
-                AppLoger.Log("Receive ping" + Status.Status);
                 if (Status.Status == IPStatus.Success)
                 {
                     return true;

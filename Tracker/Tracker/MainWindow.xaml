@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="110" Width="360" Background="Transparent" WindowStyle="None" AllowsTransparency="True" Closed="OnApplicationExit">
+        Title="MainWindow" Height="110" Width="360" Background="Transparent" WindowStyle="None" AllowsTransparency="True">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -75,12 +75,12 @@
                             </Grid>
                         </Border>
 
-                        <TextBox x:Name="InputField" Foreground="White" FontSize="16" BorderThickness="0" Background="Transparent" Margin="10" Width="250" FontFamily="Century Gothic" GotFocus="GotFocus"></TextBox>
+                        <TextBox x:Name="InputField" Foreground="White" FontSize="16" BorderThickness="0" Background="Transparent" Margin="10" Width="250" FontFamily="Century Gothic"></TextBox>
                     </StackPanel>
                 </Border>
 
 
-            <Button BorderThickness="0" Height="40" Width="320" Margin="0" FontSize="28" Background="#1E8449" Foreground="White" Click="ButtonSingInClick" Style="{DynamicResource ButtonStyle1}" FontFamily="Century Gothic">Войти</Button>
+            <Button BorderThickness="0" Height="40" Width="320" Margin="0" FontSize="28" Background="#1E8449" Foreground="White" Click="Button_Click" Style="{DynamicResource ButtonStyle1}" FontFamily="Century Gothic">Войти</Button>
 
             </StackPanel>
         </Border>
