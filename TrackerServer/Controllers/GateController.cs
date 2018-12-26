@@ -36,7 +36,7 @@ namespace TrackerServer.Controllers
                 }
                 session.Handle(s);
                 s.lastRequest = DateTime.Now;
-                return Ok((SessionState) s);
+                return Ok(((SessionState) s));
             }
             return NotFound();
         }

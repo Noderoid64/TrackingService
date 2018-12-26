@@ -22,6 +22,13 @@ namespace Tracker
         public WindowLoginUI()
         {
             InitializeComponent();
+            SetPosition();
+            Topmost = true;
+        }
+        private void SetPosition()
+        {
+            this.Left = System.Windows.SystemParameters.PrimaryScreenWidth - this.Width - 60;
+            this.Top = System.Windows.SystemParameters.PrimaryScreenHeight - this.Height - 60;
         }
     }
 }

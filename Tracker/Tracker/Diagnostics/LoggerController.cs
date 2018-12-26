@@ -14,6 +14,7 @@ namespace Tracker.Diagnostics
     static class LoggerController
     {
         static Object locker = new Object();
+
         public static void ConfigureLogger()
         {
             try
@@ -26,20 +27,20 @@ namespace Tracker.Diagnostics
                     ShowSecond = true,
                     ShowMillisecond = true
                 };
-                DebugLevelExtention debugLevelExtention = new DebugLevelExtention(DebugLevelExtention.Levels.Debug);
                 FileLogger fileLogger = new FileLogger("./Logs/");
-                debugLevelExtention.AddLogger(fileLogger);
-                timeExtention.AddLogger(debugLevelExtention);
+                timeExtention.AddLogger(fileLogger);
                 localLogger.AddLogger(timeExtention);
                 localLogger.Log("          <--NewLog-->");
             }
             catch(Exception e)
             {
-                LogError("Configure Logger error: \n" + e);
+                LogFatalBeforeLoading("Configure Logger error: \n" + e);
             }
             
         }
-        public static void LogError(string message)
+       
+
+        public static void LogFatalBeforeLoading(string message)
         {
             lock(locker)
             {

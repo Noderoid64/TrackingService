@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using MercuryLogger;
+
 namespace Tracker.UIModule
 {
     internal class TrayModule : IDisposable
     {
         private NotifyIcon icon;
+        const string iconPath = "./icon.ico";
         public TrayModule()
         {
             icon = new NotifyIcon();
@@ -25,7 +28,17 @@ namespace Tracker.UIModule
 
         private void SetIcon()
         {
-            icon.Icon = new System.Drawing.Icon("./icon.ico");
+            try
+            {
+                icon.Icon = new System.Drawing.Icon(iconPath);
+            }
+            catch (Exception e)
+            {
+                MainLogger.GetInstance().Log("[Fatal] Icon on path \"" + iconPath + "\" could not be uploaded \n Detail: " + e);
+                throw;
+            }
+            MainLogger.GetInstance().Log("[Info] Icon added successfully ");
+            
         }
     }
 }

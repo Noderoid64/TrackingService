@@ -78,12 +78,20 @@
     <Compile Include="Core.cs" />
     <Compile Include="Diagnostics\LoggerController.cs" />
     <Compile Include="Diagnostics\ProcessKiller.cs" />
+    <Compile Include="Diagnostics\SettingsLoader.cs" />
+    <Compile Include="Model\ClientRequest.cs" />
+    <Compile Include="Model\GlobalSettings.cs" />
     <Compile Include="Model\ServerResponse.cs" />
     <Compile Include="Model\Session.cs" />
+    <Compile Include="Net\PostSender.cs" />
+    <Compile Include="Net\INetModule.cs" />
+    <Compile Include="Net\NetModule.cs" />
+    <Compile Include="TimerControll\ITimerController.cs" />
+    <Compile Include="TimerControll\TimerController.cs" />
     <Compile Include="Tools\ApplicationDiagnostic\AppDiagnostic.cs" />
     <Compile Include="Tools\ConnectionModule\DefaultConnectionModule.cs" />
     <Compile Include="Tools\ConnectionModule\ConnectionModule.cs" />
-    <Compile Include="Tools\PingModule\PingController.cs" />
+    <Compile Include="Net\PingController.cs" />
     <Compile Include="Tools\PostSender\DefaultPostSender.cs" />
     <Compile Include="Tools\ConnectionModule\WebAPI\IWebAPI.cs" />
     <Compile Include="Tools\ConnectionModule\WebAPI\DefaultWebAPI.cs" />
@@ -94,12 +102,14 @@
     <Compile Include="UIModule\AdditionalSessionUI.xaml.cs">
       <DependentUpon>AdditionalSessionUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIModule\AdditionalSessionUiEventArgs.cs" />
     <Compile Include="UIModule\IViewModule.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIModule\TrayModule.cs" />
     <Compile Include="UIModule\ViewModule.cs" />
+    <Compile Include="UIModule\WindowLoginEventArgs.cs" />
     <Compile Include="UIModule\WindowLoginUI.xaml.cs">
       <DependentUpon>WindowLoginUI.xaml</DependentUpon>
     </Compile>
@@ -154,6 +164,8 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\clock-icon.png.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tools\PingModule\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
