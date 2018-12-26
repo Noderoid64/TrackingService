@@ -9,8 +9,10 @@ using Tracker.Model;
 using Tracker.UIModule;
 using Tracker.Net;
 using Tracker.TimerControll;
+using Tracker.Hook;
 
 using MercuryLogger;
+
 
 namespace Tracker
 {
@@ -36,7 +38,9 @@ namespace Tracker
             netModule = new NetModule(GlobalSettings.GetInstance().PingTimeout);
 
             viewModule.ShowWindowLoginUI();
-            
+
+
+            HookController.Subscribe();
 
         }
 

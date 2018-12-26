@@ -12,7 +12,9 @@ namespace Tracker.Model
         private static GlobalSettings instance;
         private static object syncRoot = new Object();
 
-        private GlobalSettings() { }
+        private GlobalSettings() {
+            ClientRequest = new ClientRequest();
+        }
 
         public static GlobalSettings GetInstance()
         {

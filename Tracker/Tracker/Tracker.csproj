@@ -79,6 +79,7 @@
     <Compile Include="Diagnostics\LoggerController.cs" />
     <Compile Include="Diagnostics\ProcessKiller.cs" />
     <Compile Include="Diagnostics\SettingsLoader.cs" />
+    <Compile Include="Hook\HookController.cs" />
     <Compile Include="Model\ClientRequest.cs" />
     <Compile Include="Model\GlobalSettings.cs" />
     <Compile Include="Model\ServerResponse.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Tools\ConnectionModule\WebAPI\DefaultWebAPI.cs" />
     <Compile Include="Tools\PostSender\IPostSender.cs" />
     <Compile Include="Tools\PostSender\WebApiErrorsEnum.cs" />
-    <Compile Include="Tools\TimerController\GlobalHookController.cs" />
+    <Compile Include="Hook\GlobalHookController.cs" />
     <Compile Include="Tools\TimerController\TimerController.cs" />
     <Compile Include="UIModule\AdditionalSessionUI.xaml.cs">
       <DependentUpon>AdditionalSessionUI.xaml</DependentUpon>
@@ -117,7 +118,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tools\GlobalHook.cs" />
+    <Compile Include="Hook\GlobalHook.cs" />
     <Page Include="UIModule\AdditionalSessionUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
