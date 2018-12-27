@@ -19,7 +19,11 @@ namespace Tracker.UIModule
             SetIcon();
             icon.Visible = true;
         }
-
+        public void ShowMessage(string message)
+        {
+            icon.BalloonTipText = message;
+            icon.ShowBalloonTip(200);
+        }
         public void Dispose()
         {
             if (icon != null)

@@ -29,17 +29,23 @@ namespace Tracker.Net
                 }
                 return response;
             }
+            catch (WebException webex)
+            {
+                WebResponse errResp = webex.Response;
+                MainLogger.GetInstance().Log("[Error] PostSender error (no response)\n" + errResp);
+                throw new Exception("Нет ответа сервера");
+            }
             catch (Exception e)
             {
                 MainLogger.GetInstance().Log("[Fatal] PostSender error\n" + e);
-                throw;
+                throw new Exception("Ошибка запроса");
             }
                        
         }
         public static ServerResponse SendValue(string host, int trackingValue, string sessionKey)
         {
-            if (host == "" || trackingValue == 0 || sessionKey == "")
-                MainLogger.GetInstance().Log("[Error] ValuePostSender: host=" + host + " trackingValue=" + trackingValue + " sessionKet=" + sessionKey);
+            if (host == "" || sessionKey == "")
+                MainLogger.GetInstance().Log("[Error] ValuePostSender: host=" + host + " trackingValue=" + trackingValue + " sessionKey=" + sessionKey);
             string localString = Send(host + "?session_key=" + sessionKey + "&tracking_value=" + trackingValue);
             ServerResponse sr = JsonConvert.DeserializeObject<ServerResponse>(localString);
             return sr;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace Tracker.UIModule
 {
@@ -17,6 +18,8 @@ namespace Tracker.UIModule
             trayModule = new TrayModule();
             windowLogin = new WindowLoginUI();
             additionalSessionUI = new AdditionalSessionUI();
+
+            windowLogin.ButtonLoginClick += LogInButton;
         }
 
         public bool isWindowLoginUIVisible { get; private set; }
@@ -27,7 +30,8 @@ namespace Tracker.UIModule
 
         public void HideAdditionalSessionUI()
         {
-            throw new NotImplementedException();
+            additionalSessionUI.Hide();
+            IsAdditionalSessionUIVisible = false;
         }
         public void HideWindowLoginUI()
         {
@@ -39,20 +43,36 @@ namespace Tracker.UIModule
         {
             throw new NotImplementedException();
         }
-
         public void SendErrorWindowLoginUI(string message)
         {
-            throw new NotImplementedException();
+            windowLogin.SetError(message);
         }
 
         public void ShowAdditionalSessionUI()
         {
-            throw new NotImplementedException();
+            Action A = () =>
+            {
+                additionalSessionUI.Show();
+            };
+            additionalSessionUI.Dispatcher.BeginInvoke(A);
+            
+            
+            IsAdditionalSessionUIVisible = true;
         }
         public void ShowWindowLoginUI()
         {
             windowLogin.Show();
             isWindowLoginUIVisible = true;
+        }
+
+        public void TrayMessage(string message)
+        {
+            trayModule.ShowMessage(message);
+        }
+
+        private void LogInButton(object sender, WindowLoginEventArgs e)
+        {
+            LogIn.Invoke(sender, e);
         }
     }
 }

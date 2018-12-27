@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tracker.UIModule
 {
-    internal class WindowLoginEventArgs : EventArgs
+    public class WindowLoginEventArgs : EventArgs
     {
         public string Key { get; private set; }
         public WindowLoginEventArgs(string key)

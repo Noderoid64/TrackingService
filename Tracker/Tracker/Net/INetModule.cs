@@ -10,8 +10,10 @@ namespace Tracker.Net
 {
     interface INetModule
     {
-        ServerResponse SendPingError(string host, ClientRequest request);
-        ServerResponse SendValue(string host, ClientRequest request);
+        ServerResponse SendPingError(string host, ClientRequest request, Action<string> d = null);
+        ServerResponse SendValue(string host, ClientRequest request, Action<string> d = null);
         bool SendPing(string hostName);
+
+        
     }
 }

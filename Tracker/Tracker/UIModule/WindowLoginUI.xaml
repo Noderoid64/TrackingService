@@ -1,4 +1,4 @@
-﻿<Window x:Class="Tracker.WindowLoginUI"
+﻿<Window x:Class="Tracker.UIModule.WindowLoginUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -75,12 +75,12 @@
                         </Grid>
                     </Border>
 
-                    <TextBox x:Name="InputField" Foreground="White" FontSize="16" BorderThickness="0" Background="Transparent" Margin="10" Width="250" FontFamily="Century Gothic"></TextBox>
+                    <TextBox x:Name="InputField" Foreground="White" FontSize="16" BorderThickness="0" Background="Transparent" Margin="10" Width="250" FontFamily="Century Gothic" GotFocus="InputField_GotFocus"></TextBox>
                 </StackPanel>
             </Border>
 
 
-            <Button BorderThickness="0" Height="40" Width="320" Margin="0" FontSize="28" Background="#1E8449" Foreground="White" Style="{DynamicResource ButtonStyle1}" FontFamily="Century Gothic">Войти</Button>
+            <Button BorderThickness="0" Height="40" Width="320" Margin="0" FontSize="28" Background="#1E8449" Foreground="White" Style="{DynamicResource ButtonStyle1}" FontFamily="Century Gothic" Click="ButtonLogin_Click">Войти</Button>
 
         </StackPanel>
     </Border>

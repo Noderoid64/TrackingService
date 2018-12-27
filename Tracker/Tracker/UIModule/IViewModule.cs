@@ -21,5 +21,7 @@ namespace Tracker.UIModule
 
         void SendErrorWindowLoginUI(string message);
         void SendErrorAdditionalSessionUI(string message);
+
+        void TrayMessage(string message);
     }
 }

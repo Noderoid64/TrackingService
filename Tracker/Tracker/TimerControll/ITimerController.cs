@@ -9,5 +9,9 @@ namespace Tracker.TimerControll
     interface ITimerController
     {
         event EventHandler Tick;
+
+        void TimerStart(int dueTime, int period);
+        void TimerStop();
+        void TimerChange(int dueTime, int period);
     }
 }

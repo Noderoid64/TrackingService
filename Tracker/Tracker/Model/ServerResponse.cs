@@ -12,5 +12,11 @@ namespace Tracker.Model
         public int session_time { get; set; }
         public int additional_time { get; set; }
 
+        public override string ToString()
+        {
+            return "Tracking_Time: " + tracking_time + " " +
+                "Session_Time: " + session_time + " " +
+                "Additional_Time: " + additional_time + " ";
+        }
     }
 }

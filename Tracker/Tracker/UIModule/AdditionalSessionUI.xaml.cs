@@ -26,7 +26,7 @@ namespace Tracker.UIModule
             Topmost = true; // Send the window to the top of the screen
         }
         private void SetPosition()
-        {
+        {            
             this.Left = System.Windows.SystemParameters.PrimaryScreenWidth - this.Width - 60;
             this.Top = System.Windows.SystemParameters.PrimaryScreenHeight - this.Height - 60;
         }
