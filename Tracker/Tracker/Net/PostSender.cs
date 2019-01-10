@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 using Tracker.Model;
 
-using MercuryLogger;
 using Newtonsoft.Json;
 
 namespace Tracker.Net
@@ -25,19 +24,19 @@ namespace Tracker.Net
                 }
                 if (response == "")
                 {
-                    MainLogger.GetInstance().Log("[Error] no response");
+                    NLog.LogManager.GetCurrentClassLogger().Error("No response");
                 }
                 return response;
             }
             catch (WebException webex)
             {
                 WebResponse errResp = webex.Response;
-                MainLogger.GetInstance().Log("[Error] PostSender error (no response)\n" + errResp);
+                NLog.LogManager.GetCurrentClassLogger().Error("PostSender error (no response)\n" + errResp);
                 throw new Exception("Нет ответа сервера");
             }
             catch (Exception e)
             {
-                MainLogger.GetInstance().Log("[Fatal] PostSender error\n" + e);
+                NLog.LogManager.GetCurrentClassLogger().Fatal("PostSender error\n" + e);
                 throw new Exception("Ошибка запроса");
             }
                        
@@ -45,7 +44,7 @@ namespace Tracker.Net
         public static ServerResponse SendValue(string host, int trackingValue, string sessionKey)
         {
             if (host == "" || sessionKey == "")
-                MainLogger.GetInstance().Log("[Error] ValuePostSender: host=" + host + " trackingValue=" + trackingValue + " sessionKey=" + sessionKey);
+                NLog.LogManager.GetCurrentClassLogger().Error("ValuePostSender: host=" + host + " trackingValue=" + trackingValue + " sessionKey=" + sessionKey);
             string localString = Send(host + "?session_key=" + sessionKey + "&tracking_value=" + trackingValue);
             ServerResponse sr = JsonConvert.DeserializeObject<ServerResponse>(localString);
             return sr;
@@ -53,7 +52,7 @@ namespace Tracker.Net
         public static ServerResponse SendError(string host, int pingError, string sessionKey)
         {
             if (host == "" || pingError == 0 || sessionKey == "")
-                MainLogger.GetInstance().Log("[Error] ValuePostSender: host=" + host + " ping_error=" + pingError + " sessionKet=" + sessionKey);
+                NLog.LogManager.GetCurrentClassLogger().Error("ValuePostSender: host=" + host + " ping_error=" + pingError + " sessionKet=" + sessionKey);
             string localString = Send(host + "?session_key=" + sessionKey + "&ping_error=" + pingError);
             ServerResponse sr = JsonConvert.DeserializeObject<ServerResponse>(localString);
             return sr;

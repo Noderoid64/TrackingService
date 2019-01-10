@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.IO;
 
 using Tracker.Model;
-using MercuryLogger;
 
 namespace Tracker.Diagnostics
 {
@@ -53,10 +52,10 @@ namespace Tracker.Diagnostics
             }
             catch(Exception e)
             {
-                MainLogger.GetInstance().Log("[Warning] Config reading failed\n" + e);
+                NLog.LogManager.GetCurrentClassLogger().Warn("Config reading failed\n" + e);
                 throw;
             }
-            MainLogger.GetInstance().Log("[Info] Config read successfully\n");
+            NLog.LogManager.GetCurrentClassLogger().Info("Config read successfully\n");
 
         }
     }

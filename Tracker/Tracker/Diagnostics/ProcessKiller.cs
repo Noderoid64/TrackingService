@@ -20,14 +20,14 @@ namespace Tracker.Diagnostics
                     {
                         if (item.Id == p1.Id)
                         {
-                            LoggerController.LogFatalBeforeLoading("Process " + item.ProcessName + " already running");
+                            NLog.LogManager.GetCurrentClassLogger().Fatal("Process " + item.ProcessName + " already running");
                             item.Kill();                            
                         }
                     }
             }
             catch (Exception e)
             {
-                LoggerController.LogFatalBeforeLoading("ProcessKiller error: " + e);
+                NLog.LogManager.GetCurrentClassLogger().Fatal("ProcessKiller error: " + e);
                 throw;
             }
            

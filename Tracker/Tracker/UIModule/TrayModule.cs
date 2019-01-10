@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using MercuryLogger;
+
 
 namespace Tracker.UIModule
 {
@@ -38,10 +38,10 @@ namespace Tracker.UIModule
             }
             catch (Exception e)
             {
-                MainLogger.GetInstance().Log("[Fatal] Icon on path \"" + iconPath + "\" could not be uploaded \n Detail: " + e);
+                NLog.LogManager.GetCurrentClassLogger().Fatal("Icon on path \"" + iconPath + "\" could not be uploaded \n Detail: " + e);
                 throw;
             }
-            MainLogger.GetInstance().Log("[Info] Icon added successfully ");
+            NLog.LogManager.GetCurrentClassLogger().Info("Icon added successfully ");
             
         }
     }

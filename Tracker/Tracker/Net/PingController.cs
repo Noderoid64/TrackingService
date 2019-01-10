@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 using System.Diagnostics;
-using MercuryLogger;
+
 
 namespace Tracker.Net
 {
@@ -19,7 +19,7 @@ namespace Tracker.Net
         {
             if(host == null)
             {
-                MainLogger.GetInstance().Log("[Fatal] Ping hostname is null");
+                NLog.LogManager.GetCurrentClassLogger().Fatal("Ping hostname is null");
                 return false;
             }
             try
@@ -28,19 +28,19 @@ namespace Tracker.Net
                 PingReply Status = P.Send(PingPreProcessing(host), timeOut * 1000);
                 if (Status.Status == IPStatus.Success)
                 {
-                    MainLogger.GetInstance().Log("[Info] Ping to " + host + " Success");
+                    NLog.LogManager.GetCurrentClassLogger().Info("Ping to " + host + " Success");
                     return true;
                 }
                 else
                 {
-                    MainLogger.GetInstance().Log("[Info] Ping to " + host + " failed (" + Status.Status + ")");
+                    NLog.LogManager.GetCurrentClassLogger().Info("Ping to " + host + " failed (" + Status.Status + ")");
                     return false;
                 }
                     
             }
             catch (Exception e)
             {
-                MainLogger.GetInstance().Log("[Error] Ping to " + host + " failed\n" + e);
+                NLog.LogManager.GetCurrentClassLogger().Error("Ping to " + host + " failed\n" + e);
                 return false;
             }
             finally

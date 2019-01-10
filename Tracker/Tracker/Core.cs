@@ -11,8 +11,6 @@ using Tracker.Net;
 using Tracker.TimerControll;
 using Tracker.Hook;
 
-using MercuryLogger;
-
 
 namespace Tracker
 {
@@ -26,9 +24,8 @@ namespace Tracker
 
         public Core()
         {
-            
-            ProcessKiller.CheckOnInstanse();
             LoggerController.ConfigureLogger();
+            ProcessKiller.CheckOnInstanse();            
             SettingsLoader.ReadConfig();
 
             viewModule = new ViewModule();
@@ -55,7 +52,7 @@ namespace Tracker
             ServerResponse sr = netModule.SendValue(globalSettings.ServerUrl, globalSettings.ClientRequest, (a)=>viewModule.SendErrorWindowLoginUI(a));
             if(sr != null)
             {
-                MainLogger.GetInstance().Log("[Info] message: sessionTime:" + sr.session_time + " tracking:" + sr.tracking_time + " additional:" + sr.additional_time);
+                NLog.LogManager.GetCurrentClassLogger().Info("message: sessionTime:" + sr.session_time + " tracking:" + sr.tracking_time + " additional:" + sr.additional_time);
                 if (viewModule.isWindowLoginUIVisible)
                 viewModule.HideWindowLoginUI();
                 viewModule.TrayMessage("Вы авторизировались как " + windowLoginEventArgs.Key);
@@ -65,7 +62,7 @@ namespace Tracker
             }
             else
             {
-                MainLogger.GetInstance().Log("[Error] message: no resp");
+                NLog.LogManager.GetCurrentClassLogger().Error("[Error] message: no resp");
                 viewModule.TrayMessage("Проверьте подключиние или повторите попытку позже");
             }
                
@@ -156,7 +153,7 @@ namespace Tracker
             {
                 if (settings.ServerResponse.session_time == 0)
                 {
-                    MainLogger.GetInstance().Log("stop");
+                    NLog.LogManager.GetCurrentClassLogger().Info("stop");
                     timer.TimerStop();
                     if(settings.ServerResponse.additional_time ==0)
                     {
@@ -182,14 +179,14 @@ namespace Tracker
         }
         private void SessionClose()
         {
-            MainLogger.GetInstance().Log("[Info] SessionClose");
+            NLog.LogManager.GetCurrentClassLogger().Info("[Info] SessionClose");
             GlobalSettings.GetInstance().ClientRequest = new ClientRequest();
             viewModule.ShowWindowLoginUI();
             viewModule.TrayMessage("Сессия завершена");
         }
         private void ProposeAddition()
         {
-            MainLogger.GetInstance().Log("[Info] ProposeAddition");
+            NLog.LogManager.GetCurrentClassLogger().Info("ProposeAddition");
             viewModule.ShowAdditionalSessionUI();
 
             viewModule.TrayMessage("Сессия завершена");

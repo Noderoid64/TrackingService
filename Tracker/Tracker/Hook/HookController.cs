@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Tracker.Model;
 
-using MercuryLogger;
+
 
 namespace Tracker.Hook
 {
@@ -41,7 +41,7 @@ namespace Tracker.Hook
             if(state == false)
             {
                 GlobalSettings.GetInstance().ClientRequest.TrackingValue = 1;
-                MainLogger.GetInstance().Log("[Info] Hook subscribe");
+                NLog.LogManager.GetCurrentClassLogger().Info("Hook subscribe");
                 hook.MouseMove += UserActivity;
                 hook.MouseButtonDown += UserActivity;
                 hook.KeyDown += UserActivity;
@@ -56,7 +56,7 @@ namespace Tracker.Hook
         {
             if (state == true)
             {
-                MainLogger.GetInstance().Log("[Info] Hook unsubscribe");
+                NLog.LogManager.GetCurrentClassLogger().Info("Hook unsubscribe");
                 hook.MouseMove -= UserActivity;
                 hook.MouseButtonDown -= UserActivity;
                 hook.KeyDown -= UserActivity;
@@ -76,8 +76,8 @@ namespace Tracker.Hook
             state = false;
 
             GlobalSettings.GetInstance().ClientRequest.TrackingValue = 0;
-
-            MainLogger.GetInstance().Log("[Info] UserActivity");
+            
+            NLog.LogManager.GetCurrentClassLogger().Info(" UserActivity");
         }
 
         public void Dispose()

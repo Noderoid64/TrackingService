@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Tracker.Model;
 
-using MercuryLogger;
+
 
 namespace Tracker.Net
 {
@@ -20,17 +20,17 @@ namespace Tracker.Net
 
         public ServerResponse SendPingError(string host, ClientRequest request, Action<string> d = null)
         {
-            MainLogger.GetInstance().Log("[Info] send Ping Error to " + host + " SessionKey: " + request.SessionKey + " ping error: " + request.PingError);
+            NLog.LogManager.GetCurrentClassLogger().Info("send Ping Error to " + host + " SessionKey: " + request.SessionKey + " ping error: " + request.PingError);
             return PostSender.SendError(host,request.PingError, request.SessionKey);
         }
         public ServerResponse SendValue(string host, ClientRequest request, Action<string> d = null)
         {
-            MainLogger.GetInstance().Log("[Info] send TrackingValue to " + host + " SessionKey: " + request.SessionKey  + " TrackingValue: " + request.TrackingValue);
+            NLog.LogManager.GetCurrentClassLogger().Info("Send TrackingValue to " + host + " SessionKey: " + request.SessionKey  + " TrackingValue: " + request.TrackingValue);
             ServerResponse sr;
             try
             {
                 sr = PostSender.SendValue(host, request.TrackingValue, request.SessionKey);
-                MainLogger.GetInstance().Log("[Info] Get response " + " SessionTime: " + sr.session_time + " TrackingTime: " + sr.tracking_time + " AdditionalTime: " + sr.additional_time);
+                NLog.LogManager.GetCurrentClassLogger().Info("Get response " + " SessionTime: " + sr.session_time + " TrackingTime: " + sr.tracking_time + " AdditionalTime: " + sr.additional_time);                
                 return sr;
             }
             catch (Exception e)
