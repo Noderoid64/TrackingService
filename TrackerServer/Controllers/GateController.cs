@@ -10,8 +10,9 @@ using Microsoft.Extensions;
 
 namespace TrackerServer.Controllers
 {
-
-    public class GateController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class GateController : ControllerBase
     {
         static SessionStateKey s;
         static Session session;
@@ -19,8 +20,14 @@ namespace TrackerServer.Controllers
         {
             session = new MainSession(out s);
         }
+        [HttpGet]
+        public IActionResult test()
+        {
+            return Ok("Hello");
+        }
 
-        [Route("/Gate")]
+        [HttpGet]
+        [Route("login")]
         public IActionResult login()
         {
             SessionParams sessionParams = GetParams(Request);
@@ -36,7 +43,7 @@ namespace TrackerServer.Controllers
                 }
                 session.Handle(s);
                 s.lastRequest = DateTime.Now;
-                return Ok(((SessionState) s));
+                return Ok(((SessionState)s));
             }
             return NotFound();
         }

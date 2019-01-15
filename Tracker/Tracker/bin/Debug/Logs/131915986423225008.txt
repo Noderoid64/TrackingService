@@ -1,0 +1,4 @@
+2019-01-10 14:57:22.3966|INFO|Tracker.Diagnostics.LoggerController|Logger succsess
+2019-01-10 14:57:22.5639|INFO|Tracker.Diagnostics.SettingsLoader|Config read successfully
+
+2019-01-10 14:57:22.6060|INFO|Tracker.UIModule.TrayModule|Icon added successfully 

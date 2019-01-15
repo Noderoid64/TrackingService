@@ -1,14 +1,6 @@
 {
-  "ProjectFilePath": "c:\\Users\\Nod\\Desktop\\444\\TrackerServer\\TrackerServer.csproj",
+  "ProjectFilePath": "d:\\Git\\TrackingService\\TrackerServer\\TrackerServer.csproj",
   "TargetFramework": "netcoreapp2.1",
   "TagHelpers": [],
-  "Configuration": {
-    "ConfigurationName": "MVC-2.1",
-    "LanguageVersion": "2.1",
-    "Extensions": [
-      {
-        "ExtensionName": "MVC-2.1"
-      }
-    ]
-  }
+  "Configuration": null
 }
