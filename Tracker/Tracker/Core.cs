@@ -42,7 +42,7 @@ namespace Tracker
 
         public void ButtonLogIn(object sender, WindowLoginEventArgs windowLoginEventArgs)
         {
-            GlobalSettings globalSettings = GlobalSettings.GetInstance();
+            GlobalSettings globalSettings = GlobalSettings.GetInstance();            
             if(!netModule.SendPing(globalSettings.PingUrl))
             {
                 viewModule.SendErrorWindowLoginUI("Ошибка");                
@@ -71,7 +71,17 @@ namespace Tracker
         }
         public void ButtonAddSession(object sender, AdditionalSessionUiEventArgs additionalSessionUiEventArgs)
         {
-
+            if (viewModule.IsAdditionalSessionUIVisible)
+                viewModule.HideAdditionalSessionUI();
+            if (additionalSessionUiEventArgs.IsAdditionalSession)
+            {
+                GlobalSettings.GetInstance().IsAdditional = true;
+                ButtonLogIn(null, new WindowLoginEventArgs(GlobalSettings.GetInstance().ClientRequest.SessionKey));
+            }
+            else
+            { 
+                SessionClose();
+            }
         }
         private void Tick(object sender, EventArgs e)
         {
@@ -163,7 +173,7 @@ namespace Tracker
                     else
                     {
                         //ProposeAddition
-                        ProposeAddition();
+                        ProposeAddition(settings.ServerResponse.additional_time);
                     }
                     return;
                 }
@@ -181,13 +191,20 @@ namespace Tracker
         {
             NLog.LogManager.GetCurrentClassLogger().Info("[Info] SessionClose");
             GlobalSettings.GetInstance().ClientRequest = new ClientRequest();
+            GlobalSettings.GetInstance().IsAdditional = false;
             viewModule.ShowWindowLoginUI();
             viewModule.TrayMessage("Сессия завершена");
         }
-        private void ProposeAddition()
+        private void ProposeAddition(int second)
         {
             NLog.LogManager.GetCurrentClassLogger().Info("ProposeAddition");
-            viewModule.ShowAdditionalSessionUI();
+
+            int hours = second / 3600;
+            int minute = second /60 % 60;
+            second = second % 60;
+            TimeSpan time = new TimeSpan(hours,minute,second);
+
+            viewModule.ShowAdditionalSessionUI(time);
 
             viewModule.TrayMessage("Сессия завершена");
         }

@@ -19,7 +19,7 @@ namespace TrackerServer
             {
                 Additional = false,
                 tracking_time = 2,
-                additional_time = 5,
+                additional_time = 0,
                 session_time = 5,
                 lastRequest = DateTime.MinValue,
                 Key = "nod"

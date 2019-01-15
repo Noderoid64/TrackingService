@@ -65,8 +65,8 @@
                 </TextBlock>
             </Grid>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="ButtonOk"  BorderThickness="0" Background="#1E8449" Foreground="White" FontSize="22" Margin="20,0,10,0" Height="50" Width="100" Style="{DynamicResource ButtonStyle1}">Да</Button>
-                <Button x:Name="ButtonNo"  BorderThickness="0" Background="#1E8449" Foreground="White" FontSize="22" Height="50" Width="100" Style="{DynamicResource ButtonStyle1}" >Нет</Button>
+                <Button x:Name="ButtonOk" Click="ButtonOk_Click"  BorderThickness="0" Background="#1E8449" Foreground="White" FontSize="22" Margin="20,0,10,0" Height="50" Width="100" Style="{DynamicResource ButtonStyle1}">Да</Button>
+                <Button x:Name="ButtonNo" Click="ButtonNo_Click"  BorderThickness="0" Background="#1E8449" Foreground="White" FontSize="22" Height="50" Width="100" Style="{DynamicResource ButtonStyle1}" >Нет</Button>
                 <TextBlock x:Name="ClockLabel" Foreground="White" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="32">60</TextBlock>
             </StackPanel>
         </StackPanel>

@@ -20,6 +20,8 @@ namespace Tracker.UIModule
             additionalSessionUI = new AdditionalSessionUI();
 
             windowLogin.ButtonLoginClick += LogInButton;
+
+            additionalSessionUI.SessionContinue += AdditionalSessionContinue;
         }
 
         public bool isWindowLoginUIVisible { get; private set; }
@@ -30,13 +32,23 @@ namespace Tracker.UIModule
 
         public void HideAdditionalSessionUI()
         {
-            additionalSessionUI.Hide();
-            IsAdditionalSessionUIVisible = false;
+            Action A = () =>
+            {
+                additionalSessionUI.Hide();
+                IsAdditionalSessionUIVisible = false;
+            };
+            additionalSessionUI.Dispatcher.BeginInvoke(A);
+            
         }
         public void HideWindowLoginUI()
         {
-            windowLogin.Hide();
-            isWindowLoginUIVisible = false;
+            Action A = () =>
+            {
+                windowLogin.Hide();
+                isWindowLoginUIVisible = false;
+            };
+            windowLogin.Dispatcher.BeginInvoke(A);
+            
         }
 
         public void SendErrorAdditionalSessionUI(string message)
@@ -48,10 +60,12 @@ namespace Tracker.UIModule
             windowLogin.SetError(message);
         }
 
-        public void ShowAdditionalSessionUI()
+        public void ShowAdditionalSessionUI(TimeSpan time)
         {
             Action A = () =>
             {
+                additionalSessionUI.SetTime(time);
+                additionalSessionUI.StartTimer();
                 additionalSessionUI.Show();
             };
             additionalSessionUI.Dispatcher.BeginInvoke(A);
@@ -61,7 +75,13 @@ namespace Tracker.UIModule
         }
         public void ShowWindowLoginUI()
         {
-            windowLogin.Show();
+            Action A = () =>
+            {
+                windowLogin.Show();
+                isWindowLoginUIVisible = true;
+            };
+            windowLogin.Dispatcher.BeginInvoke(A);
+
             isWindowLoginUIVisible = true;
         }
 
@@ -73,6 +93,10 @@ namespace Tracker.UIModule
         private void LogInButton(object sender, WindowLoginEventArgs e)
         {
             LogIn.Invoke(sender, e);
+        }
+        private void AdditionalSessionContinue(object sender, AdditionalSessionUiEventArgs e)
+        {
+            ContinueSession.Invoke(sender,e);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Tracker.UIModule
         event EventHandler<AdditionalSessionUiEventArgs> ContinueSession;
 
         void ShowWindowLoginUI();
-        void ShowAdditionalSessionUI();
+        void ShowAdditionalSessionUI(TimeSpan time);
         void HideWindowLoginUI();
         void HideAdditionalSessionUI();
 

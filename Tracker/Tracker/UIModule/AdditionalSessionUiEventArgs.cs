@@ -2,12 +2,12 @@
 
 namespace Tracker.UIModule
 {
-    internal class AdditionalSessionUiEventArgs : EventArgs
+    public class AdditionalSessionUiEventArgs : EventArgs
     {
         public bool IsAdditionalSession { get; private set; }
         public AdditionalSessionUiEventArgs(bool isAdditionalSession)
         {
-            IsAdditionalSession = IsAdditionalSession;
+            this.IsAdditionalSession = isAdditionalSession;
         }
     }
 
