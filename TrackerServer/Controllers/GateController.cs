@@ -26,7 +26,7 @@ namespace TrackerServer.Controllers
             return Ok("Hello");
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("login")]
         public IActionResult login()
         {
